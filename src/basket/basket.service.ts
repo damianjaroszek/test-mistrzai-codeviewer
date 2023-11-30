@@ -25,6 +25,7 @@ export class BasketService {
     const def = [1,2,3];
     def.map((a) => console.log(a));
     console.log(def);
+    console.log(newItem);
 
     // const basket = await this.basketEntity.findOne();
     // if (!basket) {
