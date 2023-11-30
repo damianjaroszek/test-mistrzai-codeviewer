@@ -26,6 +26,12 @@ export class BasketService {
     def.map((a) => console.log(a));
     console.log(def);
     console.log(newItem);
+    const AC = {
+      id: 1,
+      name: 'cds'
+    };
+
+    console.log(AC);
 
     // const basket = await this.basketEntity.findOne();
     // if (!basket) {
