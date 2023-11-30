@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Podziel się wspomnieniem - Good Things App</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+  <script>
+    // window.__data__= JSON.parse(`
+    // `);
+
+
+    window.__data__= JSON.parse(`
+[{"key":"8113ec0b-f345-4100-bdbc-ca8b83bc8032","data":{"date":"2023-11-12T17:30:29.067Z"}},{"key":"ed9e88e1-446d-425f-a488-65ed459f0b0f","data":{"date":"2023-11-12T17:29:48.848Z"}},{"key":"5437d505-2836-4873-891a-a21e2f630089","data":{"date":"2023-11-12T17:27:36.552Z"}},{"key":"3debf582-4dce-4634-a7b4-50e7ef282dfd","data":{"date":"2023-11-12T17:23:06.096Z","title":"Inny tytuł"}},{"key":"f0913b66-034f-49f6-b153-21fd00fca395","data":{"date":"2023-11-12T17:21:08.993Z","title":"Inny tytuł","rating":1,"description":"Describe the emotions, location, situation, and people associated with this memory. Use language that brings the description to life and sparks imagination."}},{"key":"9bf29575-641f-425f-9b4c-f5bea85c3475","data":{"date":"2023-11-09T17:48:50.024Z","title":"Inny tytuł","rating":1,"description":"Describe the emotions, location, situation, and people associated with this memory. Use language that brings the description to life and sparks imagination."}},{"key":"47c439d3-7efa-421c-ac23-974744ed0b66","data":{"date":"2023-11-09T17:47:09.856Z","title":"Inny tytuł","rating":1,"description":"Describe the emotions, location, situation, and people associated with this memory. Use language that brings the description to life and sparks imagination."}},{"key":"36c65995-4708-4097-ab66-46b0149398f3","data":{"date":"2023-11-09T17:44:37.669Z","title":"Short impactful title that reflects the essence of the memory","rating":1,"description":"Describe the emotions, location, situation, and people associated with this memory. Use language that brings the description to life and sparks imagination."}},{"key":"438c2f2a-50fb-4c11-9baf-1167701dfa78","data":{"date":"2023-11-09T17:42:02.491Z","title":"Short impactful title that reflects the essence of the memory","rating":1,"description":"Describe the emotions, location, situation, and people associated with this memory. Use language that brings the description to life and sparks imagination."}},{"key":"b137e75c-bcca-4687-af00-eb89b89c9fbb","data":{"date":"2023-11-09T17:41:23.225Z","title":"Tytuł wspomnienia","rating":-2,"description":"Opis wspomnienia"}},{"key":"b9cdb81b-e07c-4773-b309-97bfd1de5619","data":{"date":"2023-11-09T17:39:44.587Z","title":"Tytuł wspomnienia","rating":-2,"description":"Opis wspomnienia"}}]
+    `);
+
+    // window.__conversation__ = [
+    //   {"mode":"message", "content":"Hi Tommy!"},
+    //   {"mode":"response", "content":"Hi John!"},
+    //   {"mode":"message", "content":"How are you?"},
+    //   {"mode":"response", "content":"I am fine thank you!"}
+    // ];
+
+    window.__conversation__ = [
+      //{"mode":"message", "content":""},
+
+    ];
+
+    // Pobierz dane z localstorage
+    const savedConversation = localStorage.getItem("__conversation__");
+
+    // Jeśli dane istnieją w localstorage i nie są puste, połącz je z istniejącym window.__conversation__
+    if (savedConversation) {
+      const parsedSavedConversation = JSON.parse(savedConversation);
+      window.__conversation__ = [...window.__conversation__, ...parsedSavedConversation];
+    }
+
+    // Zapisz zaktualizowany window.__conversation__ do localstorage
+    localStorage.setItem("__conversation__", JSON.stringify(window.__conversation__));
+
+  </script>
+</head>
+<body style="width: 100%;">
+
+<h1 class="text-center pb-5 pt-3">Podziel się wspomnieniem - Good Things App</h1>
+
+<div class="container container--py-4">
+
+  <div class="row">
+
+    <div class="col-3" style="width: 30%;">
+
+      <h2 class="column-title">Wspomnienia</h2>
+
+      <table class="table">
+        <caption class="table__caption">Ilość wspomnień: 20</caption>
+        <tr>
+          <th class="table__header">Wspomnienie</th>
+          <th class="table__header">Data</th>
+        </tr>
+        <!-- kolejne wspomnienia -->
+      </table>
+
+    </div>
+
+    <div class="col-6 p-2"> <!-- Removed inline style for width -->
+
+      <h2 class="column-title">Konwersacja</h2>
+
+      <div id="conversation" class="container">
+        <div class="row py-2">
+          <div class="col-12 text-start message bg-success text-white rounded p-3">Wiadomość 1</div>
+        </div>
+        <div class="row py-2">
+          <div class="col-12 text-end response bg-primary text-white rounded p-3">Odpowiedź 1</div>
+        </div>
+        <div class="row py-2">
+          <div class="col-12 text-start message bg-success text-white rounded p-3">Wiadomość 2</div>
+        </div>
+        <div class="row py-2">
+          <div class="col-12 text-end response bg-primary text-white rounded p-3">Odpowiedź 2</div>
+        </div>
+        <!-- kolejne wiadomości i odpowiedzi -->
+      </div>
+
+      <form class="form" action="https://hook.eu2.make.com/ixppo2s8enxoeom4ngrkg3apdop2o9w9?mode=user-input" method="POST">
+        <label for="message">Wpisz coś</label>
+        <textarea id="message" rows="4" name="user-input" class="form-control"></textarea>
+      </form>
+
+    </div>
+
+
+    <div class="col-3" style="width: 100%;">
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const fillTable = () => {
+    const data = window.__data__;
+    const table = document.querySelector('.table');
+
+    // Wyczyść istniejące wiersze w tabeli
+    table.innerHTML = '';
+
+    // Dodaj wiersz z nagłówkami
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `
+    <th class="table__header">Wspomnienie</th>
+    <th class="table__header">Data</th>
+  `;
+    table.appendChild(headerRow);
+
+    // Dodaj wiersze z danymi
+    data.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+      <td class="table__data">${item.data.title}</td>
+      <td class="table__data">${formatDate(item.data.date)}</td>
+    `;
+      table.appendChild(row);
+    });
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${day}-${month}-${year}`;
+  };
+
+  fillTable();
+
+  function fillConversationLayout() {
+    const conversationContainer = document.getElementById("conversation");
+    conversationContainer.innerHTML = ""; // wyczyszczenie kontenera
+
+    for (let i = 0; i < window.__conversation__.length; i++) {
+      const message = window.__conversation__[i];
+
+      const row = document.createElement("div");
+      row.classList.add("row", "py-2");
+
+      const column = document.createElement("div");
+      column.classList.add("col-12", message.mode === "message" ? "text-start" : "text-end");
+
+      const messageElement = document.createElement("div");
+      if(message.content!==''){
+      messageElement.classList.add(message.mode === "message" ? "message" : "bg-success", "text-white", "rounded", "p-3");
+      }
+      messageElement.classList.add(message.mode === "response" ? "response" : "bg-info", "text-white", "rounded", "p-3");
+      messageElement.textContent = message.content;
+
+      column.appendChild(messageElement);
+      row.appendChild(column);
+      conversationContainer.appendChild(row);
+    }
+  }
+
+  fillConversationLayout();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.form');
+    const messageInput = document.getElementById('message');
+
+    messageInput.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        form.submit();
+      }
+    });
+  });
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
