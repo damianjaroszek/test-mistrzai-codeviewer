@@ -22,9 +22,7 @@ export class BasketService {
       throw new NotFoundException(`Item with id ${productId} not found`);
     }
 
-    const def = [1,2,3];
-    def.map((a) => console.log(a));
-    console.log(def);
+    const basket = await this.getOrCreateBasket();
 
     // const basket = await this.basketEntity.findOne();
     // if (!basket) {
