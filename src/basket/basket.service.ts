@@ -22,6 +22,8 @@ export class BasketService {
       throw new NotFoundException(`Item with id ${productId} not found`);
     }
 
+    const basket = await this.getOrCreateBasket();
+
     // const basket = await this.basketEntity.findOne();
     // if (!basket) {
     //   throw new NotFoundException(`Basket with id ${basket.id} not found`);
