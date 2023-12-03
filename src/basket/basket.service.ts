@@ -22,17 +22,6 @@ export class BasketService {
       throw new NotFoundException(`Item with id ${productId} not found`);
     }
 
-    const def = [1,2,3];
-    def.map((a) => console.log(a));
-    console.log(def);
-    console.log(newItem);
-    const AC = {
-      id: 1,
-      name: 'cds'
-    };
-
-    console.log(AC);
-
     // const basket = await this.basketEntity.findOne();
     // if (!basket) {
     //   throw new NotFoundException(`Basket with id ${basket.id} not found`);
